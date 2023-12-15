@@ -1,0 +1,26 @@
+{
+  "name": "@stolaar/loopback-next",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": [
+    "docs",
+    "apps/*",
+    "packages/*",
+    "packages/**/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "eslint": "turbo eslint",
+    "build": "turbo build",
+    "lb4": "lb4"
+  },
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">=1.22.15",
+    "node": ">=18.12.1"
+  },
+  "devDependencies": {
+    "lint-staged": "13.1.2",
+    "turbo": "1.8.2"
+  }
+}
