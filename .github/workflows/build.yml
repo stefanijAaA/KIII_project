@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: stefanijaduracoska/KIII_project:latest
+          tags: stefanijaduracoska/kiii_project:latest
           secrets: |
             DATABASE_HOST=${{ secrets.DATABASE_HOST }}
             DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
