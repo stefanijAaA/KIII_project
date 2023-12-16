@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           avatar: user.image,
-          github_id: user.id,
+          HUB_id: user.id,
         })
       } catch (error) {
         console.error({ error })
@@ -26,8 +26,8 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID as string,
-      clientSecret: process.env.GITHUB_SECRET as string,
+      clientId: process.env.HUB_ID as string,
+      clientSecret: process.env.HUB_SECRET as string,
     }),
   ],
   jwt: {

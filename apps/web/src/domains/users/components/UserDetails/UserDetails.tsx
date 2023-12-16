@@ -1,5 +1,4 @@
 import { type FC } from 'react'
-import Image from 'next/image'
 import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline'
 import { IUserDetailsProps } from './types'
 import { WaitForSession } from '@components'
@@ -22,7 +21,8 @@ export const UserDetails: FC<IUserDetailsProps> = ({
         {user?.name}{' '}
         <span className="text-red-500">{isMyself ? '(me)' : ''}</span>{' '}
       </p>
-      <Image width={50} height={50} src={user?.avatar} alt={'avatar'} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img width={50} height={50} src={user?.avatar} alt={'avatar'} />
       <button
         className="font-bold"
         onClick={() => onHandleOpenChatDialog(user)}

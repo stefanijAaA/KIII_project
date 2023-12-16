@@ -1,16 +1,22 @@
 import { inject, lifeCycleObserver, LifeCycleObserver } from '@loopback/core'
 import { juggler } from '@loopback/repository'
-const { DB_HOST, DB_USER, DB_NAME, DB_PORT, DB_PASSWORD } = process.env
+const {
+  DATABASE_HOST,
+  DATABASE_USERNAME,
+  DATABASE_NAME,
+  DATABASE_PORT,
+  DATABASE_PASSWORD,
+} = process.env
 
 const config = {
   name: 'db',
   connector: 'postgresql',
   url: '',
-  host: DB_HOST,
-  port: DB_PORT,
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: DB_NAME,
+  host: DATABASE_HOST,
+  port: DATABASE_PORT,
+  user: DATABASE_USERNAME,
+  password: DATABASE_PASSWORD,
+  database: DATABASE_NAME,
 }
 
 // Observe application's life cycle to disconnect the datasource when

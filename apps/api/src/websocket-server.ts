@@ -1,26 +1,26 @@
-const { Server } = require('socket.io')
+const { Server } = require("socket.io");
 
 export class WebsocketServer {
-  io: any
+  io: any;
 
   constructor() {
-    this.io = new Server(3300, {
+    this.io = new Server(process.env.WEBSOCKET_PORT ?? 3300, {
       cors: {
-        origin: '*',
+        origin: "*",
       },
-    })
+    });
   }
 
   async start() {
-    this.io.on('connection', (socket: any) => {
-      socket.on('disconnect', () => {})
-      socket.on('updateStatus', (data: any) => {
-        console.log('updateStatus', data)
-      })
-    })
+    this.io.on("connection", (socket: any) => {
+      socket.on("disconnect", () => {});
+      socket.on("updateStatus", (data: any) => {
+        console.log("updateStatus", data);
+      });
+    });
   }
 
   async stop() {
-    this.io.close()
+    this.io.close();
   }
 }

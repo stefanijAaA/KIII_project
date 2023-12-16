@@ -1,5 +1,4 @@
 import { type FC } from 'react'
-import Image from 'next/image'
 import { Dialog } from '@headlessui/react'
 
 interface IChatDiallogHeaderProps {
@@ -17,8 +16,8 @@ export const ChatDiallogHeader: FC<IChatDiallogHeaderProps> = ({
 }) => {
   return (
     <div className="flex items-center gap-4">
-      <Image src={avatar} alt={'User Avatar'} width={50} height={50} />
-
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={avatar} alt={'User Avatar'} width={50} height={50} />
       <div>
         <Dialog.Title
           as="h3"

@@ -1,51 +1,51 @@
-import { Entity, model, property } from '@loopback/repository'
+import { Entity, model, property } from "@loopback/repository";
 
 @model()
 export class User extends Entity {
   @property({
-    type: 'number',
+    type: "number",
     id: true,
     generated: true,
   })
-  id?: number
+  id?: number;
 
   @property({
-    type: 'string',
+    type: "string",
     required: true,
   })
-  name: string
+  name: string;
 
   @property({
-    type: 'string',
+    type: "string",
     required: true,
   })
-  email: string
+  email: string;
 
   @property({
-    type: 'string',
+    type: "string",
     required: true,
   })
-  github_id: string
+  HUB_id: string;
 
   @property({
-    type: 'string',
+    type: "string",
     required: true,
   })
-  avatar: string
+  avatar: string;
 
   @property({
-    type: 'string',
+    type: "string",
     required: false,
-    default: 'offline',
+    default: "offline",
   })
-  status: string
+  status: string;
 
   @property({
-    type: 'string',
+    type: "string",
   })
-  socketId: string
+  socketId: string;
 
   constructor(data?: Partial<User>) {
-    super(data)
+    super(data);
   }
 }

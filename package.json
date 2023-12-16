@@ -12,6 +12,7 @@
     "dev": "turbo dev",
     "eslint": "turbo eslint",
     "build": "turbo build",
+    "start": "turbo start",
     "lb4": "lb4"
   },
   "engines": {

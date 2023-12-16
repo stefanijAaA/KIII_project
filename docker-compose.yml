@@ -1,0 +1,68 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+      args:
+        - PORT=${PORT}
+        - HOST=${HOST}
+        - WEBSOCKET_PORT=${WEBSOCKET_PORT}
+    depends_on:
+      - db
+    command: ["./wait-for-it.sh", "db:5432", "--", "yarn", "start"]
+    image: real_time_chat_api:${BUILD_NUMBER}
+    container_name: real_time_chat_api-${BRANCH_NAME}
+    environment:
+      - DATABASE_HOST
+      - DATABASE_USERNAME
+      - DATABASE_PASSWORD
+      - DATABASE_NAME
+      - DATABASE_PORT
+      - PORT
+      - HOST
+      - HUB_ID
+      - HUB_SECRET
+      - WEBSOCKET_PORT
+    restart: always
+    ports:
+      - "${PORT}:${PORT}"
+      - "${WEBSOCKET_PORT}:${WEBSOCKET_PORT}"
+    volumes:
+      - /opt/real_time_chat_api/logs-${BRANCH_NAME}:/usr/src/real_time_chat_api/logs:rw
+      - /opt/real_time_chat_api/data-${BRANCH_NAME}:/usr/src/real_time_chat_api/public:rw
+  frontend:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+      args:
+        - BACKEND_URL=${BACKEND_URL}
+        - HUB_ID=${HUB_ID}
+        - HUB_SECRET=${HUB_SECRET}
+        - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+        - NEXTAUTH_URL=${NEXTAUTH_URL}
+        - NEXT_PUBLIC_SOCKET_URL=${NEXT_PUBLIC_SOCKET_URL}
+    image: real_time_chat_web:${BUILD_NUMBER}
+    container_name: real_time_chat_web-${BRANCH_NAME}
+    restart: always
+    environment:
+      - BACKEND_URL=${BACKEND_URL}
+    ports:
+      - "3000:3000"
+    volumes:
+      - /opt/real_time_chat_web/logs-${BRANCH_NAME}:/usr/src/real_time_chat_web/logs:rw
+      - /opt/real_time_chat_web/data-${BRANCH_NAME}:/usr/src/real_time_chat_web/public:rw
+  db:
+    image: postgres:11.2-alpine
+    container_name: real_time_chat-db-postgres-${BRANCH_NAME}
+    restart: always
+    environment:
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - ./real_time_chat/init-postgres.sh:/docker-entrypoint-initdb.d/init-postgres.sh
+      - /opt/real_time_chat-db-${BRANCH_NAME}:/var/lib/postgresql/data
+    ports:
+      - "${DB_INITIAL_PORT}:5432"
