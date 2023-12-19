@@ -7,7 +7,7 @@ import { ApiApplication } from './application'
 async function exportOpenApiSpec(): Promise<void> {
   const config: ApplicationConfig = {
     rest: {
-      port: +(process.env.PORT ?? 3000),
+      port: +(5001),
       host: process.env.HOST ?? 'localhost',
     },
   }
