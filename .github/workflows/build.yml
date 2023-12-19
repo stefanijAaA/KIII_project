@@ -22,7 +22,7 @@ jobs:
           push: true
           file: "./api.Dockerfile"
           tags: stefanijaduracoska/kiii_project:latest
-          secrets: |
+          build-args: |
             DATABASE_HOST=${{ secrets.DATABASE_HOST }}
             DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
             DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
@@ -55,7 +55,7 @@ jobs:
           push: true
           file: "./web.Dockerfile"
           tags: stefanijaduracoska/kiii_project:latest
-          secrets: |
+          build-args: |
             NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
             BACKEND_URL=${{ secrets.BACKEND_URL }}
             HUB_ID=${{ secrets.HUB_ID }}
