@@ -20,7 +20,9 @@ const nextConfig = {
     return [
       {
         source: `${'/server'}/:ctrl*`,
-        destination: `${process.env.BACKEND_URL}/:ctrl*`,
+        destination: `${
+          process.env.BACKEND_URL ?? 'http://backend:5000'
+        }/:ctrl*`,
       },
     ]
   },
