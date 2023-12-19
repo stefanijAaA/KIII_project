@@ -20,7 +20,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          file: "{context}/api.Dockerfile"
+          file: "./api.Dockerfile"
           tags: stefanijaduracoska/kiii_project:latest
           secrets: |
             DATABASE_HOST=${{ secrets.DATABASE_HOST }}
@@ -53,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          file: "{context}/web.Dockerfile"
+          file: "./web.Dockerfile"
           tags: stefanijaduracoska/kiii_project:latest
           secrets: |
             NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
