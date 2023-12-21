@@ -20,6 +20,8 @@ Before starting the project
 - Copy `apps/web/.env.example` to `apps/web/.env.local`
 - Make sure you have the correct datasource config in `apps/api/datasources/db.datasource.ts`
 
+#
+
 Install project dependencies
 
 ```bash
