@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: real-time-chat-pod-web
+  labels:
+    app.kubernetes.io/name: real-time-chat-web-container
+spec:
+  containers:
+    - name: real-time-chat-web-container
+      image: stefanijaduracoska/kiii_project_web:latest
+      ports:
+        - containerPort: 3000
+      envFrom:
+        - secretRef:
+            name: runtime-secrets-web
