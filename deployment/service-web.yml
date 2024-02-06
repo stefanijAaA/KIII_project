@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: kiii-real-time-chat
   name: web-service
   labels:
     app: web-service

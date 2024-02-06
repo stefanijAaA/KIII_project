@@ -1,6 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  namespace: kiii-real-time-chat
   name: real-time-chat-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /

@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: kiii-real-time-chat
   name: real-time-chat-pod-api
   labels:
     app.kubernetes.io/name: real-time-chat-api-container
