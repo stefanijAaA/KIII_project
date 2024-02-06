@@ -3,6 +3,7 @@
 - It's a simple real-time chat
 - Requires Github account for login
 - It works with websockets
+- proba
 
 ### TODO:
 
